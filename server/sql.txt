@@ -1,0 +1,27 @@
+CREATE DATABASE thriftshop;
+
+USE thriftshop;
+
+CREATE TABLE `produtos` (
+  `id` int(36) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `nome` varchar(100) NOT NULL,
+  `descricao` text DEFAULT NULL,
+  `imagem` varchar(200) DEFAULT NULL,
+  `valor` decimal(5,2) NOT NULL,
+  `categoria` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `categorias` (
+  `id` int(36) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `nome` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `categorias` (`id`, `nome`, `created_at`, `updated_at`) 
+VALUES (NULL, 'Eletrônicos', current_timestamp(), NULL), 
+(NULL, 'Joalheria', current_timestamp(), NULL), 
+(NULL, 'Roupas masculinas', current_timestamp(), NULL), 
+(NULL, 'Roupas femininas', current_timestamp(), NULL)
